@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"net"
-	//msg "../main/message"
 )
 
 func main() {
