@@ -59,16 +59,23 @@ func parallelVisit(conn net.Conn) {
 
 //异或校验
 func checkMsg(message []byte) bool {
+	//for i := 1; i < len(message)-3; i++ {
+	//	message[i+1] = utils.Xor(message[i],message[i+1])
+	//}
+	//log.Info("校验值:", message[len(message)-3])
+	//if message[len(message)-3] != message[len(message)-2] {
+	//	log.Error("异或校验出错")
+	//	return false
+	//}
 	temp := message[1]
 	for i := 2; i < len(message)-2; i++ {
 		temp = utils.Xor(temp, message[i])
 	}
-	log.Info("校验值:", temp)
+	//log.Info("校验值:", temp)
 	if temp != message[len(message)-2] {
 		log.Error("异或校验出错")
 		return false
 	}
-
 	return true
 }
 
